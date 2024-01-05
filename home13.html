@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .heading {
+      background-color: #232f3e;
+      box-shadow: 0 1px 2px #232f3e;
+    }
+
+    h1 {
+      color: coral;
+      font-weight: bold;
+      background: transparent;
+      padding: 7px;
+    }
+
+    .outer-wrapper {
+      margin: 20px;
+      border: 1px solid black;
+      border-radius: 4px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
+      max-width: fit-content;
+      max-height: fit-content;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      height: fit-content;
+      max-height: 66.4vh;
+    }
+
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .table-filter {
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #133b5c;
+      color: rgb(241, 245, 179);
+      font-weight: normal;
+      font-size: 18px;
+      outline: 0.7px solid black;
+      border: 1.5px solid black;
+      padding: 15px;
+      white-space: nowrap;
+    }
+
+    th>label {
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    table td {
+      text-align: left;
+      font-size: 15px;
+      border: 1px solid rgb(177, 177, 177);
+      padding: 15px;
+      white-space: nowrap;
+    }
+    /* Fix width for "Name"*/
+    th[col-index="9"],
+    td[col-index="9"] {
+      width: 30px; /* Adjust width as needed */
+      min-width: 10px; /* Ensure a minimum width */
+    }
+	#emp-table {
+	  table-layout: fixed;
+
+	}
+  </style>
+  <title>Fixed table</title>
+</head>
+
+<body>
+  <div class="heading">
+    <h1 align='center'>Solid State Drive Prices</h1>
+  </div>
+  <div class="outer-wrapper">
+    <div class="table-wrapper">
+      <table id="emp-table">
+        <thead>
+          <tr>
+            <th col-index="1">
+              <label for="factor-filter">Form Factor</label>
+              <select id="factor-filter" class="table-filter" onchange="filter_rows()">
+                <option value="all"></option>
+              </select>
+            </th>
+            <th col-index="2">
+              <label for="technology-filter">Technology</label>
+              <select id="technology-filter" class="table-filter" onchange="filter_rows()">
+                <option value="all"></option>
+              </select>
+            </th>
+            <th col-index="3">
+              <label for="brand-filter">Brand</label>
+              <select id="brand-filter" class="table-filter" onchange="filter_rows()">
+                <option value="all"></option>
+              </select>
+            </th>
+            <th col-index="4">Price</th>
+            <th col-index="5">Price per GB</th>
+            <th col-index="6">Price per TB</th>
+            <th col-index="7">Capacity</th>
+			<th col-index="8">Warranty</th>
+            <th col-index="9" align='left'>Name</th>
+          </tr>
+        </thead>
+		 <tbody>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Corsair</td>
+			  <td>£60</td>
+			  <td>£0.060</td>
+			  <td>£59.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BZ5TKCWX/ref=nosim?tag=haloovenrevi15-21">Corsair MP600 CORE XT 1TB M.2 PCIe Gen4 NVMe SSD – Up to 5000MB/s – QLC NAND – M.2 2280 – For PCIe 4.0 Notebooks and Desktops – Black</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Corsair</td>
+			  <td>£105</td>
+			  <td>£0.052</td>
+			  <td>£52.50</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BZ5J9W22/ref=nosim?tag=haloovenrevi15-21">Corsair MP600 CORE XT 2TB M.2 PCIe Gen4 NVMe SSD – Up to 5000MB/s – QLC NAND – M.2 2280 – For PCIe 4.0 Notebooks and Desktops – Black</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Corsair</td>
+			  <td>£190</td>
+			  <td>£0.047</td>
+			  <td>£47.50</td>
+			  <td>4 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BZ62Y2S6/ref=nosim?tag=haloovenrevi15-21">Corsair MP600 CORE XT 4TB M.2 PCIe Gen4 NVMe SSD – Up to 5000MB/s – QLC NAND – M.2 2280 – For PCIe 4.0 Notebooks and Desktops – Black</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Corsair</td>
+			  <td>£75</td>
+			  <td>£0.075</td>
+			  <td>£74.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09Q2MW21F/ref=nosim?tag=haloovenrevi15-21">Corsair MP600 PRO LPX 1TB M.2 PCIe Gen4 NVMe SSD – Up to 7100MB/s – 3D TLC NAND – M.2 2280 – Optimised for PS5 – Black</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Corsair</td>
+			  <td>£136</td>
+			  <td>£0.068</td>
+			  <td>£67.99</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BWYWN6NG/ref=nosim?tag=haloovenrevi15-21">Corsair MP600 PRO LPX 2TB M.2 NVMe PCIe x4 Gen4 SSD - Optimised for PS5 (Up to 7,100MB/sec Sequential Read & 6,800MB/sec Sequential Write Speeds, High-Speed Interface, Compact Form Factor) White</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£63</td>
+			  <td>£0.063</td>
+			  <td>£62.61</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07YD579WM/ref=nosim?tag=haloovenrevi15-21">Crucial BX500 1TB 3D NAND SATA 2.5 Inch Internal SSD - Up to 540MB/s - CT1000BX500SSD1</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£75</td>
+			  <td>£0.075</td>
+			  <td>£74.99</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CCN9NHTC/ref=nosim?tag=haloovenrevi15-21">Crucial BX500 1TB 3D NAND SATA 2.5 Inch Internal SSD - Up to 540MB/s - CT1000BX500SSD101 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£183</td>
+			  <td>£0.091</td>
+			  <td>£91.50</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CCN9QWKT/ref=nosim?tag=haloovenrevi15-21">Crucial BX500 2TB 3D NAND SATA 2.5 Inch Internal SSD - Up to 540MB/s - CT2000BX500SSD101 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£33</td>
+			  <td>£0.066</td>
+			  <td>£66.00</td>
+			  <td>500 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B9BL9T4H/ref=nosim?tag=haloovenrevi15-21">Crucial BX500 3D NAND SATA 2.5-inch SSD Drive, 500 GB Black</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£32</td>
+			  <td>£0.067</td>
+			  <td>£66.54</td>
+			  <td>480 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07G3KGYZQ/ref=nosim?tag=haloovenrevi15-21">Crucial BX500 480GB 3D NAND SATA 2.5 Inch Internal SSD - Up to 540MB/s - CT480BX500SSD1</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£64</td>
+			  <td>£0.064</td>
+			  <td>£63.91</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B078211KBB/ref=nosim?tag=haloovenrevi15-21">Crucial MX500 1TB 3D NAND SATA 2.5 Inch Internal SSD - Up to 560MB/s - CT1000MX500SSD1</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£94</td>
+			  <td>£0.094</td>
+			  <td>£93.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CCN9LQHY/ref=nosim?tag=haloovenrevi15-21">Crucial MX500 1TB 3D NAND SATA 2.5 Inch Internal SSD - Up to 560MB/s - CT1000MX500SSD1 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£120</td>
+			  <td>£0.060</td>
+			  <td>£60.00</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B003J5JB12/ref=nosim?tag=haloovenrevi15-21">Crucial MX500 2TB 3D NAND SATA 2.5 Inch Internal SSD - Up to 560MB/s - CT2000MX500SSD1</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£208</td>
+			  <td>£0.052</td>
+			  <td>£51.99</td>
+			  <td>4 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09FRRWVWX/ref=nosim?tag=haloovenrevi15-21">Crucial MX500 4TB 3D NAND SATA 2.5 Inch Internal SSD - Up To 560MB/s - CT4000MX500SSD1</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£39</td>
+			  <td>£0.078</td>
+			  <td>£78.40</td>
+			  <td>500 GB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0786QNS9B/ref=nosim?tag=haloovenrevi15-21">Crucial MX500 500GB 3D NAND SATA 2.5 Inch Internal SSD - Up to 560MB/s - CT500MX500SSD1</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£53</td>
+			  <td>£0.053</td>
+			  <td>£52.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B089DNM8LR/ref=nosim?tag=haloovenrevi15-21">Crucial P2 1TB M.2 PCIe Gen3 NVMe Internal SSD - Up to 2400MB/s - CT1000P2SSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£57</td>
+			  <td>£0.057</td>
+			  <td>£56.59</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B25LZGGW/ref=nosim?tag=haloovenrevi15-21">Crucial P3 1TB M.2 PCIe Gen3 NVMe Internal SSD - Up to 3500MB/s - CT1000P3SSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£46</td>
+			  <td>£0.046</td>
+			  <td>£45.72</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C2WGL8DQ/ref=nosim?tag=haloovenrevi15-21">Crucial P3 1TB M.2 PCIe Gen3 NVMe Internal SSD - Up to 3500MB/s - CT1000P3SSD801 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£94</td>
+			  <td>£0.047</td>
+			  <td>£47.12</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B25MJ1YT/ref=nosim?tag=haloovenrevi15-21">Crucial P3 2TB M.2 PCIe Gen3 NVMe Internal SSD - Up to 3500MB/s - CT2000P3SSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£187</td>
+			  <td>£0.093</td>
+			  <td>£93.50</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CCN91GCY/ref=nosim?tag=haloovenrevi15-21">Crucial P3 2TB M.2 PCIe Gen3 NVMe Internal SSD - Up to 3500MB/s - CT2000P3SSD801 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£370</td>
+			  <td>£0.092</td>
+			  <td>£92.50</td>
+			  <td>4 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CCNB5SH5/ref=nosim?tag=haloovenrevi15-21">Crucial P3 4TB M.2 PCIe Gen3 NVMe Internal SSD - Up to 3500MB/s - CT4000P3SSD801 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£35</td>
+			  <td>£0.070</td>
+			  <td>£69.98</td>
+			  <td>500 GB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B25LQQPC/ref=nosim?tag=haloovenrevi15-21">Crucial P3 500GB M.2 PCIe Gen3 NVMe Internal SSD - Up to 3500MB/s - CT500P3SSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£54</td>
+			  <td>£0.054</td>
+			  <td>£53.60</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BYWB6237/ref=nosim?tag=haloovenrevi15-21">Crucial P3 Plus 1TB M.2 PCIe Gen4 NVMe Internal SSD - Up to 5000MB/s - CT1000P3PSSD801 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£95</td>
+			  <td>£0.047</td>
+			  <td>£47.44</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B25ML2FH/ref=nosim?tag=haloovenrevi15-21">Crucial P3 Plus 2TB M.2 PCIe Gen4 NVMe Internal SSD - Up to 5000MB/s - CT2000P3PSSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£236</td>
+			  <td>£0.118</td>
+			  <td>£118</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BYW8FLKN/ref=nosim?tag=haloovenrevi15-21">Crucial P3 Plus 2TB M.2 PCIe Gen4 NVMe Internal SSD - Up to 5000MB/s - CT2000P3PSSD801 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£205</td>
+			  <td>£0.051</td>
+			  <td>£51.23</td>
+			  <td>4 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CCNCW5QX/ref=nosim?tag=haloovenrevi15-21">Crucial P3 Plus 4TB M.2 PCIe Gen4 NVMe Internal SSD - Up to 4800MB/s - CT4000P3PSSD801 (Acronis Edition)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£41</td>
+			  <td>£0.081</td>
+			  <td>£81.02</td>
+			  <td>500 GB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B25NTRGD/ref=nosim?tag=haloovenrevi15-21">Crucial P3 Plus 500GB M.2 PCIe Gen4 NVMe Internal SSD - Up to 4700MB/s - CT500P3PSSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£116</td>
+			  <td>£0.058</td>
+			  <td>£57.96</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C34Y8C8L/ref=nosim?tag=haloovenrevi15-21">Crucial P5 Plus 2TB Gen4 NVMe M.2 SSD Internal Gaming SSD with Heatsink, Compatible with Playstation 5 (PS5) - up to 6600MB/s - CT2000P5PSSD5</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£214</td>
+			  <td>£0.107</td>
+			  <td>£107</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B098WKQRDL/ref=nosim?tag=haloovenrevi15-21">Crucial P5 Plus 2TB M.2 PCIe Gen4 NVMe Internal Gaming SSD - Up to 6600MB/s - CT2000P5PSSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£90</td>
+			  <td>£0.090</td>
+			  <td>£89.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CK2S298S/ref=nosim?tag=haloovenrevi15-21">Crucial T500 1TB PCIe Gen4 NVMe M.2 Internal Gaming SSD (Solid State Drive) with Heatsink, Up to 7300MB/s, PlayStation 5 (PS5) Compatible Plus 1 Month Adobe CC All Apps - CT1000T500SSD5</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£80</td>
+			  <td>£0.080</td>
+			  <td>£79.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CK39YR9V/ref=nosim?tag=haloovenrevi15-21">Crucial T500 1TB PCIe Gen4 NVMe M.2 Internal Gaming SSD (Solid State Drive), Up to 7300MB/s, Laptop and Desktop Compatible Plus 1 Month Adobe CC All Apps - CT1000T500SSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£145</td>
+			  <td>£0.072</td>
+			  <td>£72.48</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CK2RKPBL/ref=nosim?tag=haloovenrevi15-21">Crucial T500 2TB PCIe Gen4 NVMe M.2 Internal Gaming SSD (Solid State Drive) with Heatsink, Up to 7400MB/s, PlayStation 5 (PS5) Compatible Plus 1 Month Adobe CC All Apps - CT2000T500SSD5</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£135</td>
+			  <td>£0.067</td>
+			  <td>£67.50</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CK2TC9XQ/ref=nosim?tag=haloovenrevi15-21">Crucial T500 2TB PCIe Gen4 NVMe M.2 Internal Gaming SSD (Solid State Drive), Up to 7400MB/s, Laptop and Desktop Compatible Plus 1 Month Adobe CC All Apps - CT2000T500SSD8</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Crucial</td>
+			  <td>£63</td>
+			  <td>£0.126</td>
+			  <td>£126</td>
+			  <td>500 GB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CK2R8YLY/ref=nosim?tag=haloovenrevi15-21">Crucial T500 500GB PCIe Gen4 NVMe M.2 Internal Gaming SSD (Solid State Drive), Up to 7200MB/s, Laptop and Desktop Compatible Plus 1 Month Adobe CC All Apps - CT500T500SSD8</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£109</td>
+			  <td>£0.109</td>
+			  <td>£109</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C9WGGZT9/ref=nosim?tag=haloovenrevi15-21">Crucial X10 Pro 1TB Portable SSD - Up to 2100MB/s read and 2000MB/s write - PC and Mac, with Mylio Photos+ - USB 3.2, USB-C External Solid State Drive - CT1000X10PROSSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£195</td>
+			  <td>£0.097</td>
+			  <td>£97.42</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C9WGS6MC/ref=nosim?tag=haloovenrevi15-21">Crucial X10 Pro 2TB Portable SSD - Up to 2100MB/s read and 2000MB/s write - PC and Mac, with Mylio Photos+ - USB 3.2, USB-C External Solid State Drive - CT2000X10PROSSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£82</td>
+			  <td>£0.082</td>
+			  <td>£81.99</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08FSZT2J7/ref=nosim?tag=haloovenrevi15-21">Crucial X6 1TB Portable SSD - Up to 800MB/s - PC and Mac - USB 3.2 USB-C External Solid State Drive - CT1000X6SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£89</td>
+			  <td>£0.089</td>
+			  <td>£89.41</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08GDCKH2G/ref=nosim?tag=haloovenrevi15-21">Crucial X6 1TB Portable SSD with USB-A adapter - up to 800MB/s - PC and Mac, USB 3.2 External Solid State Drive - CT1000X6SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£102</td>
+			  <td>£0.051</td>
+			  <td>£51.00</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08FSNKNSV/ref=nosim?tag=haloovenrevi15-21">Crucial X6 2TB Portable SSD - Up to 800MB/s - PC and Mac - USB 3.2 USB-C External Solid State Drive - CT2000X6SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£108</td>
+			  <td>£0.054</td>
+			  <td>£54.00</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08GDCKQ8C/ref=nosim?tag=haloovenrevi15-21">Crucial X6 2TB Portable SSD with USB-A adapter - up to 800MB/s - PC and Mac, USB 3.2 External Solid State Drive - CT2000X6SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£182</td>
+			  <td>£0.045</td>
+			  <td>£45.48</td>
+			  <td>4 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08W1KDM9K/ref=nosim?tag=haloovenrevi15-21">Crucial X6 4TB Portable SSD - Up to 800MB/s - PC and Mac - USB 3.2 USB-C External Solid State Drive - CT4000X6SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£47</td>
+			  <td>£0.095</td>
+			  <td>£94.72</td>
+			  <td>500 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08W1F8YGJ/ref=nosim?tag=haloovenrevi15-21">Crucial X6 500GB Portable SSD - Up to 540MB/s - PC and Mac - USB 3.2 USB-C External Solid State Drive - CT500X6SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£96</td>
+			  <td>£0.096</td>
+			  <td>£96.49</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07YD5TK4F/ref=nosim?tag=haloovenrevi15-21">Crucial X8 1TB Portable SSD - Up to 1050MB/s - PC and Mac - USB 3.2 External Solid State Drive - CT1000X8SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£96</td>
+			  <td>£0.048</td>
+			  <td>£48.16</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08C3XVP2P/ref=nosim?tag=haloovenrevi15-21">Crucial X8 2TB Portable SSD - Up to 1050MB/s - PC and Mac - USB 3.2 External Solid State Drive - CT2000X8SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£194</td>
+			  <td>£0.048</td>
+			  <td>£48.38</td>
+			  <td>4 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B787PNL7/ref=nosim?tag=haloovenrevi15-21">Crucial X8 4TB Portable SSD - Up to 1050MB/s - PC and Mac - USB 3.2 External Solid State Drive - CT4000X8SSD9</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£82</td>
+			  <td>£0.082</td>
+			  <td>£81.99</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CGW1FQV4/ref=nosim?tag=haloovenrevi15-21">Crucial X9 1TB Portable SSD - Up to 1050MB/s - PC and Mac, with Mylio Photos+ offer - USB 3.2 External Solid State Drive - CT1000X9SSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£88</td>
+			  <td>£0.088</td>
+			  <td>£88.01</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CJK6RJG3/ref=nosim?tag=haloovenrevi15-21">Crucial X9 1TB Portable SSD with USB-A Adapter - Up to 1050MB/s - PC and Mac, with Mylio Photos+ - USB-C 3.2 External Solid State Drive - CT1000X9SSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£125</td>
+			  <td>£0.062</td>
+			  <td>£62.50</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CGW18S6Y/ref=nosim?tag=haloovenrevi15-21">Crucial X9 2TB Portable SSD - Up to 1050MB/s - PC and Mac, with Mylio Photos+ offer - USB 3.2 External Solid State Drive - CT2000X9SSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£131</td>
+			  <td>£0.066</td>
+			  <td>£65.50</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CJK6PL7X/ref=nosim?tag=haloovenrevi15-21">Crucial X9 2TB Portable SSD with USB-A Adapter - Up to 1050MB/s - PC and Mac, with Mylio Photos+ - USB-C 3.2 External Solid State Drive - CT2000X9SSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£240</td>
+			  <td>£0.060</td>
+			  <td>£60.00</td>
+			  <td>4 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CGVZL1M1/ref=nosim?tag=haloovenrevi15-21">Crucial X9 4TB Portable SSD - Up to 1050MB/s - PC and Mac, with Mylio Photos+ offer - USB 3.2 External Solid State Drive - CT4000X9SSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£72</td>
+			  <td>£0.072</td>
+			  <td>£72.45</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C9WKGXHD/ref=nosim?tag=haloovenrevi15-21">Crucial X9 Pro 1TB Portable SSD - Read/Write speeds up to 1050MB/s - PC and Mac, with Mylio Photos+ - USB 3.2, USB-C External Solid State Drive - CT1000X9PROSSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£78</td>
+			  <td>£0.078</td>
+			  <td>£78.47</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CJK8KGWH/ref=nosim?tag=haloovenrevi15-21">Crucial X9 Pro 1TB Portable SSD with USB-A Adapter - Read/Write speeds up to 1050MB/s - PC and Mac, with Mylio Photos+ - USB-C 3.2, USB-C External Solid State Drive - CT1000X9PROSSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£132</td>
+			  <td>£0.066</td>
+			  <td>£65.77</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C9WHSZZN/ref=nosim?tag=haloovenrevi15-21">Crucial X9 Pro 2TB Portable SSD - Read/Write speeds up to 1050MB/s - PC and Mac, with Mylio Photos+ - USB 3.2, USB-C External Solid State Drive - CT2000X9PROSSD902</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Crucial</td>
+			  <td>£138</td>
+			  <td>£0.069</td>
+			  <td>£68.78</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CJK8KGWJ/ref=nosim?tag=haloovenrevi15-21">Crucial X9 Pro 2TB Portable SSD with USB-A Adapter - Read/Write speeds up to 1050MB/s - PC and Mac, with Mylio Photos+ - USB-C 3.2, USB-C External Solid State Drive - CT2000X9PROSSD902</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>fanxiang</td>
+			  <td>£94</td>
+			  <td>£0.047</td>
+			  <td>£47.25</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BWXK95PY/ref=nosim?tag=haloovenrevi15-21">fanxiang 2TB SSD SATA III 6Gb/s 2.5" SSD Internal Solid State Drive, 3D NAND, SLC Cache, Up to 550MB/s, Compatible with Laptops and PC Desktops</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>fanxiang</td>
+			  <td>£30</td>
+			  <td>£0.059</td>
+			  <td>£58.57</td>
+			  <td>512 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BX61DW5Y/ref=nosim?tag=haloovenrevi15-21">fanxiang S100 512GB SSD SATA III 2.5" Internal Solid State Drive, Read Speed up to 550MB/sec, Compatible with Laptop and PC</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>fanxiang</td>
+			  <td>£52</td>
+			  <td>£0.051</td>
+			  <td>£51.50</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09XDJ673F/ref=nosim?tag=haloovenrevi15-21">fanxiang S101 1TB SSD SATA III 6Gb/s 2.5" SSD Internal Solid State Drive, Read Speed up to 550MB/sec, Compatible with Laptop and PC Desktops(Black)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>fanxiang</td>
+			  <td>£20</td>
+			  <td>£0.077</td>
+			  <td>£77.34</td>
+			  <td>256 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09XDJWWG7/ref=nosim?tag=haloovenrevi15-21">fanxiang S101 256GB SSD SATA III 6Gb/s 2.5" Internal Solid State Drive, Read Speed up to 550MB/sec, Compatible with Laptop and PC Desktops(Black)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>fanxiang</td>
+			  <td>£32</td>
+			  <td>£0.062</td>
+			  <td>£62.30</td>
+			  <td>512 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09XDJPPMB/ref=nosim?tag=haloovenrevi15-21">fanxiang S101 512GB SSD SATA III 6Gb/s 2.5" Internal Solid State Drive, Read Speed up to 550MB/sec, Compatible with Laptop and PC Desktops(Black)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>fanxiang</td>
+			  <td>£52</td>
+			  <td>£0.052</td>
+			  <td>£52.50</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B55TQMFJ/ref=nosim?tag=haloovenrevi15-21">fanxiang S500 Pro 1TB NVMe SSD M.2 PCIe Gen3x4 2280 Internal Solid State Drive, Graphene Cooling Sticker, SLC Cache 3D NAND TLC, Up To 3500MB/s, Compatible with Laptop PC</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>fanxiang</td>
+			  <td>£96</td>
+			  <td>£0.048</td>
+			  <td>£47.75</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BCQS37R7/ref=nosim?tag=haloovenrevi15-21">fanxiang S500 Pro 2TB SSD NVMe SSD M.2 PCIe Gen3x4 2280 Internal Solid State Drive, Graphene Cooling Sticker, SLC Cache 3D NAND TLC, Up To 3500MB/s, Fit for Laptop Desktops</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>fanxiang</td>
+			  <td>£30</td>
+			  <td>£0.060</td>
+			  <td>£59.57</td>
+			  <td>512 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B55R7PYB/ref=nosim?tag=haloovenrevi15-21">fanxiang S500 Pro 512GB SSD NVMe SSD M.2 PCIe Gen3x4 2280 Internal Solid State Drive, SLC Cache 3D NAND TLC, Up To 3200MB/s, Compatible with Laptop and PC Desktops(Black)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>fanxiang</td>
+			  <td>£64</td>
+			  <td>£0.064</td>
+			  <td>£63.50</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BNQ1NXC3/ref=nosim?tag=haloovenrevi15-21">fanxiang S660 1TB SSD PCIe 4.0 NVMe SSD M.2 2280 Internal Solid State Drive - with Heatsink, Up to 5000MB/s, Perfectly Compatible with PS5, Dynamic SLC Cache</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>fanxiang</td>
+			  <td>£102</td>
+			  <td>£0.051</td>
+			  <td>£51.25</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BNQ2JZQJ/ref=nosim?tag=haloovenrevi15-21">fanxiang S660 2TB SSD PCIe 4.0 NVMe SSD M.2 2280 Internal Solid State Drive - with Heatsink, Up to 4800MB/s, Perfectly Compatible with PS5, Dynamic SLC Cache</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>fanxiang</td>
+			  <td>£72</td>
+			  <td>£0.072</td>
+			  <td>£72.50</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BNQ2DFX6/ref=nosim?tag=haloovenrevi15-21">fanxiang S770 1TB SSD PCIe 4.0 NVMe SSD M.2 2280 Internal Solid State Drive, Configure DRAM Cache, with Heatsink, Up to 7300MB/s, Perfectly Compatible with PS5 Laptop PC Desktop</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>fanxiang</td>
+			  <td>£122</td>
+			  <td>£0.061</td>
+			  <td>£61.25</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BNQ2X2WY/ref=nosim?tag=haloovenrevi15-21">fanxiang S770 2TB SSD PCIe 4.0 NVMe SSD M.2 2280 Internal Solid State Drive, Configure DRAM Cache, with Heatsink, Up to 7300MB/s, Perfectly Compatible with PS5 Laptop PC Desktop</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Fikwot</td>
+			  <td>£51</td>
+			  <td>£0.051</td>
+			  <td>£50.99</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C48ML5KT/ref=nosim?tag=haloovenrevi15-21">Fikwot FN501 Pro 1TB NVMe SSD - M.2 2280 PCIe Gen3 x4 Internal Solid State Drive with Graphene Cooling Sticker, Up to 3500MB/s, SLC Cache 3D NAND TLC, Compatible with Laptop & PC Desktop</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Integral</td>
+			  <td>£104</td>
+			  <td>£0.052</td>
+			  <td>£52.06</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CD242L9C/ref=nosim?tag=haloovenrevi15-21">Integral SlimXpress 2TB USB & USB-C 3.2 Gen 2 Portable External SSD - Super Fast 1050MB/s Read / 1000MB/s Write speeds, Sleek Aluminium Casing and Plug & Play. Mac, PC, XBOX & Playstation Compatible</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Integral</td>
+			  <td>£200</td>
+			  <td>£0.050</td>
+			  <td>£50.00</td>
+			  <td>4 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CD2311TS/ref=nosim?tag=haloovenrevi15-21">Integral SlimXpress 4TB USB & USB-C 3.2 Gen 2 Portable External SSD - Super Fast 1050MB/s Read / 1000MB/s Write speeds, Sleek Aluminium Casing and Plug & Play. Mac, PC, XBOX & Playstation Compatible</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Integral</td>
+			  <td>£45</td>
+			  <td>£0.090</td>
+			  <td>£90.00</td>
+			  <td>500 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CD23JVVQ/ref=nosim?tag=haloovenrevi15-21">Integral SlimXpress 500GB USB & USB-C 3.2 Gen 2 Portable External SSD - Super Fast 1050MB/s Read / 1000MB/s Write speeds, Sleek Aluminium Casing and Plug & Play. Mac, PC, XBOX & Playstation Compatible</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Integral</td>
+			  <td>£80</td>
+			  <td>£0.040</td>
+			  <td>£39.98</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BCLD1SKR/ref=nosim?tag=haloovenrevi15-21">Integral V Series 2TB SATA III 2.5 Inch Internal SSD, up to 520MB/s Read, 470MB/s Write</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>King</td>
+			  <td>£39</td>
+			  <td>£0.039</td>
+			  <td>£38.99</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B2K51BHH/ref=nosim?tag=haloovenrevi15-21">KingSpec 1TB 2.5" SATA SSD with ABS Case, SATA 3 Internal SSD 3D NAND Flash, Compatible with Desktop/Laptop/Playstation 3</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Kingston</td>
+			  <td>£21</td>
+			  <td>£0.087</td>
+			  <td>£86.92</td>
+			  <td>240 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B01N5IB20Q/ref=nosim?tag=haloovenrevi15-21">Kingston A400 SSD Internal Solid State Drive 2.5" SATA Rev 3.0, 240GB - SA400S37/240G</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Kingston</td>
+			  <td>£29</td>
+			  <td>£0.061</td>
+			  <td>£61.12</td>
+			  <td>480 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B01N0TQPQB/ref=nosim?tag=haloovenrevi15-21">Kingston A400 SSD Internal Solid State Drive 2.5" SATA Rev 3.0, 480GB - SA400S37/480G</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Kingston</td>
+			  <td>£51</td>
+			  <td>£0.053</td>
+			  <td>£53.12</td>
+			  <td>960 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B079XC5PVV/ref=nosim?tag=haloovenrevi15-21">Kingston A400 SSD Internal Solid State Drive 2.5" SATA Rev 3.0, 960GB - SA400S37/960G</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Kingston</td>
+			  <td>£54</td>
+			  <td>£0.054</td>
+			  <td>£54.43</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BBWH1R8H/ref=nosim?tag=haloovenrevi15-21">Kingston NV2 NVMe PCIe 4.0 Internal SSD 1TB M.2 2280 -SNV2S/1000G</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Kingston</td>
+			  <td>£69</td>
+			  <td>£0.069</td>
+			  <td>£69.41</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CCQB7BN7/ref=nosim?tag=haloovenrevi15-21">Kingston XS1000 1TB External SSD USB 3.2 Gen 2 Portable Solid State Drive -SXS1000/1000G</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Kingston</td>
+			  <td>£103</td>
+			  <td>£0.052</td>
+			  <td>£51.51</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CCQG7RS8/ref=nosim?tag=haloovenrevi15-21">Kingston XS1000 2TB External SSD USB 3.2 Gen 2 Portable Solid State Drive -SXS1000/2000G</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>KOOTION</td>
+			  <td>£27</td>
+			  <td>£0.108</td>
+			  <td>£108</td>
+			  <td>250 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08PZ5QXRM/ref=nosim?tag=haloovenrevi15-21">KOOTION External SSD 250GB Portable SSD High-Speed Solid State Drive, Up to 540MB/s,USB 3.1 Gen2</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Lexar</td>
+			  <td>£215</td>
+			  <td>£0.054</td>
+			  <td>£53.75</td>
+			  <td>4 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CB8J9L8D/ref=nosim?tag=haloovenrevi15-21">Lexar NM790 4TB SSD, M.2 2280 PCIe Gen4x4 NVMe 1.4 Internal SSD, Up to 7400MB/s Read, Up to 6500MB/s Write, Internal Solid State Drive for PS5, PC, Laptop, Gamers, Professionals (LNM790X004T-RNNNG)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Lexar</td>
+			  <td>£113</td>
+			  <td>£0.056</td>
+			  <td>£56.50</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CHS1SN9K/ref=nosim?tag=haloovenrevi15-21">Lexar NQ790 2TB SSD, M.2 2280 PCIe Gen4x4 NVMe 1.4 Internal SSD, Up to 7000MB/s Read, Up to 6000MB/s Write, High Performance Internal Solid State Drive for Intense Workloads, PS5 SSD</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Lexar</td>
+			  <td>£121</td>
+			  <td>£0.945</td>
+			  <td>£945</td>
+			  <td>128 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C1TPNNTK/ref=nosim?tag=haloovenrevi15-21">Lexar Professional 128GB CFexpress Type B Memory Card Gold Series, Up to 1750MB/s Read, Raw 8K Video Recording, Supports PCIe 3.0 and NVMe (LCXEXPR128G-RNENG)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Lexar</td>
+			  <td>£391</td>
+			  <td>£0.391</td>
+			  <td>£391</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BHDRCTJR/ref=nosim?tag=haloovenrevi15-21">Lexar Professional 1TB CFexpress Type B Memory Card Gold Series, Up to 1900MB/s Read, Raw 8K Video Recording, Supports PCIe 3.0 and NVMe (LCXEXPR001T-RNENG)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Lexar</td>
+			  <td>£171</td>
+			  <td>£0.669</td>
+			  <td>£669</td>
+			  <td>256 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C1TQM4LR/ref=nosim?tag=haloovenrevi15-21">Lexar Professional 256GB CFexpress Type B Memory Card Gold Series, Up to 1750MB/s Read, Raw 8K Video Recording, Supports PCIe 3.0 and NVMe (LCXEXPR256G-RNENG)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Lexar</td>
+			  <td>£133</td>
+			  <td>£1.039</td>
+			  <td>£1,039</td>
+			  <td>128 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C39NM9XY/ref=nosim?tag=haloovenrevi15-21">Lexar Professional GOLD Series 128GB CFexpress Card, Type B CF Card, Up to 1750MB/s Read, Adopt PCIe 3.0 and NVMe, Memory Card for Professional Photographer, Videographer (LCXEXPR128G-RNENG)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Lexar</td>
+			  <td>£204</td>
+			  <td>£0.797</td>
+			  <td>£797</td>
+			  <td>256 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C39SMCGG/ref=nosim?tag=haloovenrevi15-21">Lexar Professional GOLD Series 256GB CFexpress Card, Type B CF Card, Up to 1750MB/s Read, Adopt PCIe 3.0 and NVMe, Memory Card for Professional Photographer, Videographer (LCXEXPR256G-RNENG)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Lexar</td>
+			  <td>£364</td>
+			  <td>£0.711</td>
+			  <td>£711</td>
+			  <td>512 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C39QK7X6/ref=nosim?tag=haloovenrevi15-21">Lexar Professional GOLD Series 512GB CFexpress Card, Type B CF Card, Up to 1750MB/s Read, Adopt PCIe 3.0 and NVMe, Memory Card for Professional Photographer, Videographer (LCXEXPR512G-RNENG)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Netac</td>
+			  <td>£70</td>
+			  <td>£0.070</td>
+			  <td>£69.50</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08BJ1S5CP/ref=nosim?tag=haloovenrevi15-21">Netac Portable SSD 1TB USB 3.2 Gen 2 (10Gbps, Type-C) External Solid State Drive 1TB (Portable SSD 1TB) Easy to Carry up to 550 MB/s Read, Business Travel Essential, Deep Black</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Netac</td>
+			  <td>£46</td>
+			  <td>£0.092</td>
+			  <td>£91.98</td>
+			  <td>500 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B088BTGZ43/ref=nosim?tag=haloovenrevi15-21">Netac Portable SSD 500GB USB 3.2 Gen 2 (10 Gbps, Type-C) External Solid State Drive External Hard Drive,Mobile SSD 500GB, Business Travel Essential, Deep Black</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Netac</td>
+			  <td>£76</td>
+			  <td>£0.076</td>
+			  <td>£75.99</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C7BWLHTG/ref=nosim?tag=haloovenrevi15-21">Netac US5 1TB Solid USB State Drive Portable USB SSD External SSD PSSD Type-c and USB 3.2 Interface 2 in 1 Type C Speed up to 550MB/s for Smartphone and Computer Notebook</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Netac</td>
+			  <td>£50</td>
+			  <td>£0.098</td>
+			  <td>£97.64</td>
+			  <td>512 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C1SCJC9F/ref=nosim?tag=haloovenrevi15-21">Netac US5 512GB Solid USB State Drive Portable USB SSD 512GB External SSD Type-c and USB 3.2 Interface 2 in 1 Speed up to 550MB/s for Smartphone and Computer Notebook</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Netac</td>
+			  <td>£70</td>
+			  <td>£0.070</td>
+			  <td>£69.99</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CD1XZBNF/ref=nosim?tag=haloovenrevi15-21">Netac ZR 1TB RGB SSD Portable Solid State Drive External SSD Transfer Interface USB 3.2 Gen 2 High-Speed Work illuminated Neon Light with Cable up to 550MB/s for Computer Laptop</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Netac</td>
+			  <td>£136</td>
+			  <td>£0.068</td>
+			  <td>£68.00</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CD7P96KW/ref=nosim?tag=haloovenrevi15-21">Netac ZX20 2TB Extreme 2TB Portable NVMe SSD, USB 3.2 Gen 2x2, up to 2000MB/s Read and 1700MB/s Write Speed, Supports Win To Go Dust-Resistant, Black</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Netac</td>
+			  <td>£56</td>
+			  <td>£0.109</td>
+			  <td>£109</td>
+			  <td>512 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BPS6G3NW/ref=nosim?tag=haloovenrevi15-21">Netac ZX20 512GB External SSD 512GB Portable NVMe SSD, USB 3.2-C, up to 2000MB/s Read, Dust-Resistant</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£85</td>
+			  <td>£0.085</td>
+			  <td>£84.99</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BQG6JCRP/ref=nosim?tag=haloovenrevi15-21">SABRENT 2230 M.2 NVMe Gen 4 1TB SSD 4750MB/s Read PCIe 4.0 X4 Internal Solid State Drive Compatible with Steam Deck, surface pro, PCs, NUCs, and Laptops [SB-2130-1TB]</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£140</td>
+			  <td>£0.070</td>
+			  <td>£70.00</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08P2CG4JK/ref=nosim?tag=haloovenrevi15-21">SABRENT 2TB Rocket 4 Plus NVMe 4.0 Gen4 PCIe M.2 Internal SSD Extreme Performance Solid State Drive R/W 7100/6600MB/s (Latest Version) (SB-RKT4P-2TB)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£100</td>
+			  <td>£0.100</td>
+			  <td>£99.99</td>
+			  <td>1 TB</td>
+			  <td>1 year</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09G2MKHRR/ref=nosim?tag=haloovenrevi15-21">SABRENT M.2 NVMe SSD 1TB Gen 4 with PS5 Heatsink, Internal Solid State 7000MB/s Read, PCIe 4.0 M2 Hard Drive for Gamers, Compatible with PlayStation 5, PS5 Console (SB-RKT4P-PSHS-1TB)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£85</td>
+			  <td>£0.085</td>
+			  <td>£84.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08P2B6JKV/ref=nosim?tag=haloovenrevi15-21">SABRENT M.2 NVMe SSD 1TB Gen 4, Internal Solid State 7000MB/s Read, PCIe 4.0 M2 Hard Drive for Gamers, Compatible with PlayStation 5, PS5 Console, PCs, NUC Laptops and Desktops (SB-RKT4P-1TB)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£155</td>
+			  <td>£0.077</td>
+			  <td>£77.50</td>
+			  <td>2 TB</td>
+			  <td>1 year</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09G2MZ4VR/ref=nosim?tag=haloovenrevi15-21">SABRENT M.2 NVMe SSD 2TB Gen 4 with PS5 Heatsink, Internal Solid State 7100MB/s Read, PCIe 4.0 M2 Hard Drive for Gamers, Compatible with PlayStation 5, PS5 Console (SB-RKT4P-PSHS-2TB)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£435</td>
+			  <td>£0.109</td>
+			  <td>£109</td>
+			  <td>4 TB</td>
+			  <td>1 year</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09G2P4PYP/ref=nosim?tag=haloovenrevi15-21">SABRENT M.2 NVMe SSD 4TB Gen 4 PCIe 4.0 with PS5 Heatsink, Internal Solid State 7100MB/s Read (SB-RKT4P-PSHS-4TB)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£420</td>
+			  <td>£0.105</td>
+			  <td>£105</td>
+			  <td>4 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08VF99PV8/ref=nosim?tag=haloovenrevi15-21">SABRENT M.2 NVMe SSD 4TB Gen 4, Internal Solid State 7100MB/s Read, PCIe 4.0 M2 Hard Drive for Gamers, Compatible with PlayStation 5, PS5 Console, PCs, NUC Laptops and Desktops (SB-RKT4P-4TB)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£72</td>
+			  <td>£0.144</td>
+			  <td>£144</td>
+			  <td>500 GB</td>
+			  <td>1 year</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09LWYFYTW/ref=nosim?tag=haloovenrevi15-21">SABRENT M.2 NVMe SSD 500GB Gen 4 with PS5 Heatsink, Internal Solid State 7000MB/s PCIe 4.0 (SB-RKT4P-PSHS-500)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£57</td>
+			  <td>£0.114</td>
+			  <td>£114</td>
+			  <td>500 GB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09KMDMWHT/ref=nosim?tag=haloovenrevi15-21">SABRENT M.2 NVMe SSD 500GB Gen 4, Internal Solid State 7000MB/s Read, PCIe 4.0 M2 Hard Drive for Gamers, Compatible with PlayStation 5, PS5 Console, PCs, NUC Laptops and Desktops (SB-RKT4P-500)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£1,130</td>
+			  <td>£0.141</td>
+			  <td>£141</td>
+			  <td>8 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09WZK8YMY/ref=nosim?tag=haloovenrevi15-21">SABRENT M.2 NVMe SSD 8TB Gen 4, Internal Solid State 7100MB/s Read, PCIe 4.0 M2 Hard Drive for Gamers, Compatible with PlayStation 5, PS5 Console, PCs, NUC Laptops and Desktops (SB-RKT4P-8TB)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SABRENT</td>
+			  <td>£185</td>
+			  <td>£0.092</td>
+			  <td>£92.50</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C5YS3QY4/ref=nosim?tag=haloovenrevi15-21">SABRENT Q4 2230 M.2 NVMe Gen 4 2TB Internal SSD 5000MB/s Read PCIe 4.0 X4 M2 Solid State Drive Compatible with Steam Deck, ASUS ROG Ally, Mini PCs [SB-213Q-2TB]</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£78</td>
+			  <td>£0.078</td>
+			  <td>£78.00</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07KSHCG3R/ref=nosim?tag=haloovenrevi15-21">Samsung 860 QVO 1 TB SATA 2.5 Inch Internal Solid State Drive (SSD) (MZ-76Q1T0)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£77</td>
+			  <td>£0.077</td>
+			  <td>£76.97</td>
+			  <td>1 TB</td>
+			  <td>4 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B089QXQ1TV/ref=nosim?tag=haloovenrevi15-21">Samsung 870 QVO 1 TB SATA 2.5 Inch Internal Solid State Drive (SSD) (MZ-77Q1T0)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£145</td>
+			  <td>£0.073</td>
+			  <td>£72.54</td>
+			  <td>2 TB</td>
+			  <td>4 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B089R1C9HV/ref=nosim?tag=haloovenrevi15-21">Samsung 870 QVO 2 TB SATA 2.5 Inch Internal Solid State Drive (SSD) (MZ-77Q2T0)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£216</td>
+			  <td>£0.054</td>
+			  <td>£54.06</td>
+			  <td>4 TB</td>
+			  <td>4 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B089QYSMJT/ref=nosim?tag=haloovenrevi15-21">Samsung 870 QVO 4 TB SATA 2.5 Inch Internal Solid State Drive (SSD) (MZ-77Q4T0)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£458</td>
+			  <td>£0.057</td>
+			  <td>£57.25</td>
+			  <td>8 TB</td>
+			  <td>4 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B089RD13TX/ref=nosim?tag=haloovenrevi15-21">Samsung 870 QVO 8 TB SATA 2.5 Inch Internal Solid State Drive (SSD) (MZ-77Q8T0)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£70</td>
+			  <td>£0.070</td>
+			  <td>£69.99</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07MBQPQ62/ref=nosim?tag=haloovenrevi15-21">Samsung 970 EVO Plus 1 TB PCIe NVMe M.2 Internal Solid State Drive (SSD) (MMZ-V7S1T0BW )</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£134</td>
+			  <td>£0.067</td>
+			  <td>£67.00</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07MLJD32L/ref=nosim?tag=haloovenrevi15-21">Samsung 970 EVO Plus 2 TB PCIe NVMe M.2 Internal Solid State Drive (SSD) (MZ-V7S2T0)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£69</td>
+			  <td>£0.069</td>
+			  <td>£68.99</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08TJ2649W/ref=nosim?tag=haloovenrevi15-21">Samsung 980 1 TB PCIe 3.0 (up to 3.500 MB/s) NVMe M.2 Internal Solid State Drive (SSD) (MZ-V8V1T0BW)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£37</td>
+			  <td>£0.074</td>
+			  <td>£74.00</td>
+			  <td>500 GB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08THW4S3T/ref=nosim?tag=haloovenrevi15-21">Samsung 980 500 GB PCIe 3.0 (up to 3500mbs) NVMe M.2 Internal Solid State Drive (SSD) (MZ-V8V500BW)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£84</td>
+			  <td>£0.084</td>
+			  <td>£84.00</td>
+			  <td>1 TB</td>
+			  <td>43 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08GS7748F/ref=nosim?tag=haloovenrevi15-21">Samsung 980 PRO (MZ-V8P1T0BW) | NVMe M.2 Internal Solid State Drive, PCIe 4.0, 1 TB, Intelligent Thermal Control</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£138</td>
+			  <td>£0.069</td>
+			  <td>£68.99</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08QJHLC8J/ref=nosim?tag=haloovenrevi15-21">Samsung 980 PRO M.2 NVMe SSD (MZ-V8P2T0BW), 2 TB, PCIe 4.0, 7,000 MB/s Read, 5,000 MB/s Write, Internal Solid State Drive</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£90</td>
+			  <td>£0.090</td>
+			  <td>£89.99</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09J159SWL/ref=nosim?tag=haloovenrevi15-21">Samsung 980 PRO SSD with Heatsink 1TB PCIe Gen 4 NVMe M.2 Internal Solid State Hard Drive, Heat Control, Max Speed, PS5 Compatible, MZ-V8P1T0CW</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£150</td>
+			  <td>£0.075</td>
+			  <td>£75.00</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09J14CJ89/ref=nosim?tag=haloovenrevi15-21">Samsung 980 PRO SSD with Heatsink 2TB PCIe Gen 4 NVMe M.2 Internal Solid State Hard Drive, Heat Control, Max Speed, PS5 Compatible, MZ-V8P1T0CW</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£98</td>
+			  <td>£0.098</td>
+			  <td>£98.00</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B9C3ZVHR/ref=nosim?tag=haloovenrevi15-21">Samsung 990 PRO 1TB PCIe 4.0 (up to 7450 MB/s) NVMe M.2 (2280) Internal Solid State Drive (SSD) (MZ-V9P1T0BW)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Samsung</td>
+			  <td>£170</td>
+			  <td>£0.085</td>
+			  <td>£85.00</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B9C4DKKG/ref=nosim?tag=haloovenrevi15-21">Samsung 990 PRO 2TB PCIe 4.0 (up to 7450 MB/s) NVMe M.2 (2280) Internal Solid State Drive (SSD) (MZ-V9P2T0BW)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£64</td>
+			  <td>£0.128</td>
+			  <td>£128</td>
+			  <td>500 GB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DG2BHB/ref=nosim?tag=haloovenrevi15-21">Samsung Portable SSD Indigo-blue 500 GB (MU-PC500H)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£79</td>
+			  <td>£0.079</td>
+			  <td>£79.00</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08PC5DKZQ/ref=nosim?tag=haloovenrevi15-21">Samsung SSD 870 EVO, 1 TB, Form Factor 2.5”, Intelligent Turbo Write, Magician 6 Software, Black (Internal SSD)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£141</td>
+			  <td>£0.070</td>
+			  <td>£70.48</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08PC5ZYB1/ref=nosim?tag=haloovenrevi15-21">Samsung SSD 870 EVO, 2 TB, Form Factor 2.5”, Intelligent Turbo Write, Magician 6 Software, Black</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£30</td>
+			  <td>£0.120</td>
+			  <td>£120</td>
+			  <td>250 GB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08PC3PGZM/ref=nosim?tag=haloovenrevi15-21">Samsung SSD 870 EVO, 250 GB, Form Factor 2.5”, Intelligent Turbo Write, Magician 6 Software</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£54</td>
+			  <td>£0.108</td>
+			  <td>£108</td>
+			  <td>500 GB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08PC43D78/ref=nosim?tag=haloovenrevi15-21">Samsung SSD 870 EVO, 500 GB, Form Factor 2.5”, Intelligent Turbo Write, Magician 6 Software</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£79</td>
+			  <td>£0.079</td>
+			  <td>£79.00</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DF1L2J/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Portable SSD - 1 TB - USB 3.2 Gen.2 External SSD Indigo Blue (MU-PC1T0H/WW)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£80</td>
+			  <td>£0.080</td>
+			  <td>£79.99</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DFLF9S/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Portable SSD - 1 TB - USB 3.2 Gen.2 External SSD Titanium Grey (MU-PC1T0T/WW)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£130</td>
+			  <td>£0.065</td>
+			  <td>£65.00</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DG39V8/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Portable SSD - 2 TB - USB 3.2 Gen.2 External SSD - Metallic Red (MU-PC2T0R/WW)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£150</td>
+			  <td>£0.075</td>
+			  <td>£75.00</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DFFJRD/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Portable SSD - 2 TB - USB 3.2 Gen.2 External SSD Titanium Grey (MU-PC2T0T/WW)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£64</td>
+			  <td>£0.128</td>
+			  <td>£128</td>
+			  <td>500 GB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DF38J9/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Portable SSD - 500 GB - USB 3.2 Gen.2 External SSD - Metallic Red (MU-PC500R/WW)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£64</td>
+			  <td>£0.128</td>
+			  <td>£128</td>
+			  <td>500 GB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DDSXD3/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Portable SSD - 500 GB - USB 3.2 Gen.2 External SSD Titanium Grey (MU-PC500T/WW)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£129</td>
+			  <td>£0.065</td>
+			  <td>£64.50</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DDGWKL/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Portable SSD Indigo-blue 2 TB</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£80</td>
+			  <td>£0.080</td>
+			  <td>£79.79</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B087DDP3L1/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Portable SSD Mettallic Red 1 TB</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£82</td>
+			  <td>£0.082</td>
+			  <td>£82.00</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09SBJJ4JW/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Shield Portable SSD 1 TB - USB 3.2 Gen.2 External SSD Black (MU-PE1T0S/EU)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£90</td>
+			  <td>£0.090</td>
+			  <td>£90.00</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09SB38KMD/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Shield Portable SSD 1 TB - USB 3.2 Gen.2 External SSD Blue (MU-PE1T0R/EU)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£162</td>
+			  <td>£0.081</td>
+			  <td>£81.24</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09SBDYJVC/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Shield Portable SSD 2 TB - USB 3.2 Gen.2 External SSD Beige (MU-PE2T0K/EU)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£145</td>
+			  <td>£0.072</td>
+			  <td>£72.40</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09S9N4T6K/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Shield Portable SSD 2 TB - USB 3.2 Gen.2 External SSD Black (MU-PE2T0S/EU)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£172</td>
+			  <td>£0.086</td>
+			  <td>£86.15</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09SB35ZTW/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Shield Portable SSD 2 TB - USB 3.2 Gen.2 External SSD Blue (MU-PE2T0R/EU)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£296</td>
+			  <td>£0.074</td>
+			  <td>£74.01</td>
+			  <td>4 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BKPV953L/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Shield Portable SSD 4 TB - USB 3.2 Gen.2 External SSD Black (MU-PE4T0S/EU)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£131</td>
+			  <td>£0.131</td>
+			  <td>£131</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B082VW4QCX/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Touch Portable SSD - 1 TB - USB 3.2 Gen.2 External SSD Metallic Black (MU-PC1T0K/WW)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£132</td>
+			  <td>£0.066</td>
+			  <td>£66.00</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B082VVV926/ref=nosim?tag=haloovenrevi15-21">Samsung T7 Touch Portable SSD - 2 TB - USB 3.2 Gen.2 External SSD Metallic Black (MU-PC2T0K/WW)</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£116</td>
+			  <td>£0.116</td>
+			  <td>£116</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CGQ466W8/ref=nosim?tag=haloovenrevi15-21">Samsung T9 Portable SSD 1TB, Up to 2,000MB/s, USB 3.2 Gen 2x2 External Solid State Drive,Up to 3m drop resistant,for Creative professionals,YouTubers,Content creators,Mac compatible,MU-PG1T0B</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£198</td>
+			  <td>£0.099</td>
+			  <td>£99.00</td>
+			  <td>2 TB</td>
+			  <td>6 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CGQ43PMG/ref=nosim?tag=haloovenrevi15-21">Samsung T9 Portable SSD 2TB, Up to 2,000MB/s, USB 3.2 Gen 2x2 External Solid State Drive, Up to 3 m drop resistant, for Creative professionals, YouTubers, Content creators, Mac compatible, MU-PG2T0B</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Samsung</td>
+			  <td>£345</td>
+			  <td>£0.086</td>
+			  <td>£86.25</td>
+			  <td>4 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0CGQ4FJSV/ref=nosim?tag=haloovenrevi15-21">Samsung T9 Portable SSD 4TB, Up to 2,000MB/s, USB 3.2 Gen 2x2 External Solid State Drive, Up to 3 m drop resistant, for Creative professionals, YouTubers, Content creators, Mac compatible, MU-PG4T0B</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£77</td>
+			  <td>£0.077</td>
+			  <td>£77.00</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08GTYFC37/ref=nosim?tag=haloovenrevi15-21">SanDisk 1TB Extreme Portable SSD, USB-C USB 3.2 Gen 2, External NVMe Solid State Drive up to 1050 MB/s IP65 rated for dust and water resistance</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£80</td>
+			  <td>£0.080</td>
+			  <td>£79.99</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C59G4TLQ/ref=nosim?tag=haloovenrevi15-21">SanDisk 1TB Extreme Portable SSD, USB-C, External NVMe Solid State Drive, up to 1050 MB/s, IP65 rated for dust and water resistance - Monterey</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£124</td>
+			  <td>£0.123</td>
+			  <td>£124</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08GV9M64L/ref=nosim?tag=haloovenrevi15-21">SanDisk 1TB Extreme PRO Portable SSD, USB-C USB 3.2 Gen 2x2 External NVMe Solid State Drive up to 2000 MB/s IP65 rated for dust and water resistance</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Sandisk</td>
+			  <td>£70</td>
+			  <td>£0.070</td>
+			  <td>£69.99</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C5JQ68FY/ref=nosim?tag=haloovenrevi15-21">Sandisk 1TB Portable SSD – up to 800MB/s Read Speed, USB 3.2 Gen 2</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£81</td>
+			  <td>£0.081</td>
+			  <td>£81.01</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08RSH8YDJ/ref=nosim?tag=haloovenrevi15-21">SanDisk 1TB Portable SSD external SSD USB 3.2 Gen 2 up to 520 MB/s read speeds</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SanDisk</td>
+			  <td>£132</td>
+			  <td>£0.066</td>
+			  <td>£66.00</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08HN37XC1/ref=nosim?tag=haloovenrevi15-21">SanDisk 2TB Extreme Portable SSD, USB-C USB 3.2 Gen 2, External NVMe Solid State Drive, up to 1050 MB/s, IP65 rated for dust and water resistance</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£133</td>
+			  <td>£0.066</td>
+			  <td>£66.50</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C59G53GS/ref=nosim?tag=haloovenrevi15-21">SanDisk 2TB Extreme Portable SSD, USB-C, External NVMe Solid State Drive, up to 1050 MB/s, IP65 rated for dust and water resistance - Monterey</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SanDisk</td>
+			  <td>£184</td>
+			  <td>£0.092</td>
+			  <td>£92.24</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08GV4YYV7/ref=nosim?tag=haloovenrevi15-21">SanDisk 2TB Extreme PRO Portable SSD, USB-C USB 3.2 Gen 2x2 External NVMe Solid State Drive up to 2000 MB/s IP65 rated for dust and water resistance</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Sandisk</td>
+			  <td>£115</td>
+			  <td>£0.057</td>
+			  <td>£57.48</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C5JNWF58/ref=nosim?tag=haloovenrevi15-21">Sandisk 2TB Portable SSD – up to 800MB/s Read Speed, USB 3.2 Gen 2</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£76</td>
+			  <td>£0.038</td>
+			  <td>£37.96</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08RSML1B8/ref=nosim?tag=haloovenrevi15-21">SanDisk 2TB Portable SSD external SSD USB 3.2 Gen 2 up to 520 MB/s read speeds, Black</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£240</td>
+			  <td>£0.060</td>
+			  <td>£60.00</td>
+			  <td>4 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08RX4QKXS/ref=nosim?tag=haloovenrevi15-21">SanDisk 4TB Extreme Portable SSD, USB-C USB 3.2 Gen 2, External NVMe Solid State Drive, up to 1050 MB/s, IP65 rated for dust and water resistance</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£240</td>
+			  <td>£0.060</td>
+			  <td>£60.00</td>
+			  <td>4 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C59FBGG1/ref=nosim?tag=haloovenrevi15-21">SanDisk 4TB Extreme Portable SSD, USB-C, External NVMe Solid State Drive, up to 1050 MB/s, IP65 rated for dust and water resistance - Monterey</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£275</td>
+			  <td>£0.069</td>
+			  <td>£68.75</td>
+			  <td>4 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08RX3343D/ref=nosim?tag=haloovenrevi15-21">SanDisk 4TB Extreme PRO Portable SSD, USB-C USB 3.2 Gen 2x2, External NVMe Solid State Drive, up to 2000 MB/s, IP65 rated for dust and water resistance</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SanDisk</td>
+			  <td>£80</td>
+			  <td>£0.160</td>
+			  <td>£160</td>
+			  <td>500 GB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08GTXVG9P/ref=nosim?tag=haloovenrevi15-21">SanDisk Extreme 500GB Portable NVMe SSD, USB-C, up to 1050MB/s Read and 1000MB/s Write Speed, Water and Dust-Resistant</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£89</td>
+			  <td>£0.089</td>
+			  <td>£89.00</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B078STRHBX/ref=nosim?tag=haloovenrevi15-21">SanDisk Extreme Portable SSD 1TB up to 550MB/s read Solid State Drive</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SanDisk</td>
+			  <td>£134</td>
+			  <td>£0.067</td>
+			  <td>£66.76</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07TNR2CXJ/ref=nosim?tag=haloovenrevi15-21">SanDisk Extreme PRO 2TB NVMe SSD (portable NVMe SSD, USB-C, up to 1050 MB/s read and 1050 MB/s write, robust and water-resistant, carabiner hook)]</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>SanDisk</td>
+			  <td>£60</td>
+			  <td>£0.125</td>
+			  <td>£125</td>
+			  <td>480 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08RSK74K1/ref=nosim?tag=haloovenrevi15-21">SanDisk Portable SSD 480GB, up to 520MB/s read speed Black</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Seagate</td>
+			  <td>£184</td>
+			  <td>£0.184</td>
+			  <td>£184</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08K3S6WJM/ref=nosim?tag=haloovenrevi15-21">Seagate Storage Expansion Card , 1TB Solid State Drive - NVMe Expansion SSD for Xbox Series X|S (STJR1000400)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Seagate</td>
+			  <td>£148</td>
+			  <td>£0.148</td>
+			  <td>£148</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08K48F6QZ/ref=nosim?tag=haloovenrevi15-21">Seagate Storage Expansion Card for Xbox Series X|S, 1TB, SSD, Plug and Play NVMe Expansion SSD Xbox Series X|S, Officially Licensed, 2 yr Rescue Services(STJR1000400)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Seagate</td>
+			  <td>£317</td>
+			  <td>£0.158</td>
+			  <td>£158</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09BJYXMDW/ref=nosim?tag=haloovenrevi15-21">Seagate Storage Expansion Card for Xbox Series X|S, 2 TB, SSD, Plug and Play NVMe Expansion SSD Xbox Series X|S, Officially Licensed, 2 yr Rescue Services (STJR2000400)</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Seagate</td>
+			  <td>£90</td>
+			  <td>£0.176</td>
+			  <td>£176</td>
+			  <td>512 GB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09BJYFJ6G/ref=nosim?tag=haloovenrevi15-21">Seagate Storage Expansion Card for Xbox Series X|S, 512 GB, SSD, NVMe Expansion SSD for Xbox Series X|S, 2 year Rescue Services (STJR512400)</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Silicon</td>
+			  <td>£48</td>
+			  <td>£0.048</td>
+			  <td>£47.99</td>
+			  <td>1 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07KQZ1Z53/ref=nosim?tag=haloovenrevi15-21">Silicon Power SSD 1TB 3D NAND A55 SLC Cache Performance Boost 2.5 inch SATA III 7mm (0.28") Internal Solid State Drive</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Silicon</td>
+			  <td>£20</td>
+			  <td>£0.078</td>
+			  <td>£78.09</td>
+			  <td>256 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07KR2CX1F/ref=nosim?tag=haloovenrevi15-21">Silicon Power SSD 256GB 3D NAND A55 SLC Cache Performance Boost 2.5 inch SATA III 7mm (0.28") Internal Solid State Drive</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Silicon</td>
+			  <td>£29</td>
+			  <td>£0.057</td>
+			  <td>£56.62</td>
+			  <td>512 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B07KR1GFY5/ref=nosim?tag=haloovenrevi15-21">Silicon Power SSD 512GB 3D NAND A55 SLC Cache Performance Boost 2.5 inch SATA III 7mm (0.28") Internal Solid State Drive</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SK Hynix</td>
+			  <td>£92</td>
+			  <td>£0.092</td>
+			  <td>£91.99</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C4KNB2YK/ref=nosim?tag=haloovenrevi15-21">SK Hynix Beetle X31 1TB Portable SSD with DRAM, up to 1050MB/s, USB 3.2 Gen2, External Solid State Drive compatible with Windows/Mac/tablet/Android Smartphone/game console</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SK Hynix</td>
+			  <td>£60</td>
+			  <td>£0.117</td>
+			  <td>£117</td>
+			  <td>512 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C4KQ6ZWL/ref=nosim?tag=haloovenrevi15-21">SK Hynix Beetle X31 512GB Portable SSD with DRAM, up to 1050MB/s, USB 3.2 Gen2, External Solid State Drive compatible with Windows PC/Mac/tablet/Android Smartphone/game console</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SK Hynix</td>
+			  <td>£156</td>
+			  <td>£0.078</td>
+			  <td>£78.00</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09QVD9V7R/ref=nosim?tag=haloovenrevi15-21">SK Hynix Platinum P41 2TB PCIe NVMe Gen4 M.2 2280 Internal Gaming SSD | Up to 7,000MB/S | Compact Form Factor SSD with 176-Layer NAND Flash</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SSK</td>
+			  <td>£23</td>
+			  <td>£0.180</td>
+			  <td>£180</td>
+			  <td>128 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09SFYF4W3/ref=nosim?tag=haloovenrevi15-21">SSK 128GB Portable External SSD, up to 550MB/s Ultra Speed USB3.2 Gen2 External Solid State Drive USB-C Mini External SSD for Laptop, Type-C devices</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>SSK</td>
+			  <td>£40</td>
+			  <td>£0.160</td>
+			  <td>£160</td>
+			  <td>250 GB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0BJV16HC6/ref=nosim?tag=haloovenrevi15-21">SSK 250GB Portable External NVME SSD,up to 1050MB/s Extreme Transmission Speed USBC 3.2 Gen2 Solid State Drive for Type-c Smartphone,PS5,xBOX, Laptop,Macbook/Pro/Air and more</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>SSK</td>
+			  <td>£33</td>
+			  <td>£0.129</td>
+			  <td>£129</td>
+			  <td>256 GB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09SFY1F4L/ref=nosim?tag=haloovenrevi15-21">SSK 256GB Portable External SSD, up to 550MB/s Ultra Speed USB3.2 Gen2 External Solid State Drive USB-C Mini External SSD for Laptop, Type-C devices</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Transcend</td>
+			  <td>£87</td>
+			  <td>£0.087</td>
+			  <td>£87.08</td>
+			  <td>1 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C3B32H9M/ref=nosim?tag=haloovenrevi15-21">Transcend 1TB External SSD ESD310C USB 10Gbps</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Western Digital</td>
+			  <td>£59</td>
+			  <td>£0.059</td>
+			  <td>£58.99</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B097TTZD48/ref=nosim?tag=haloovenrevi15-21">WD 1TB Elements SE SSD Portable SSD USB 3.0 up to 400 MB/s 2-meters drop resistance</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£85</td>
+			  <td>£0.085</td>
+			  <td>£84.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08F27QGHX/ref=nosim?tag=haloovenrevi15-21">WD 1TB My Passport SSD Portable SSD USB-C USB 3.2 Gen 2 External NVMe Solid State Drive up to 1050 MB/s 2-meters drop resistance - Space Gray</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Western Digital</td>
+			  <td>£115</td>
+			  <td>£0.057</td>
+			  <td>£57.50</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B097TSN41S/ref=nosim?tag=haloovenrevi15-21">WD 2TB Elements SE SSD Portable SSD USB 3.0 up to 400 MB/s 2-meters drop resistance</a></td>
+			</tr>
+			<tr>
+			  <td>Internal</td>
+			  <td>SSD</td>
+			  <td>Western Digital</td>
+			  <td>£105</td>
+			  <td>£0.052</td>
+			  <td>£52.49</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C14TF467/ref=nosim?tag=haloovenrevi15-21">WD Blue SA510 2TB SATA 2.5" SSD with up to 560MB/s read speed</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£90</td>
+			  <td>£0.045</td>
+			  <td>£45.00</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09DVRBNWV/ref=nosim?tag=haloovenrevi15-21">WD Green SN350 2TB NVMe Internal SSD Solid State Drive - Gen3 PCIe, QLC, M.2 2280, Up to 3,200 MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Western Digital</td>
+			  <td>£140</td>
+			  <td>£0.140</td>
+			  <td>£140</td>
+			  <td>1 TB</td>
+			  <td>1 month</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C44XVWCH/ref=nosim?tag=haloovenrevi15-21">WD_BLACK 1TB C50 Expansion Card, Compatible for Xbox Series X,S with Officially Licensed for Xbox, Includes 1 Month Xbox Game Pass Subscription, Includes Forza Motorsport Race Day Car Pack.</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Western Digital</td>
+			  <td>£44</td>
+			  <td>£0.089</td>
+			  <td>£88.92</td>
+			  <td>500 GB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B093HFYLNJ/ref=nosim?tag=haloovenrevi15-21">WD_BLACK 500GB D30 Game Drive SSD External Solid State Drive up to 900 MB/s works with Playstation, Xbox, PC, & Mac</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Western Digital</td>
+			  <td>£84</td>
+			  <td>£0.164</td>
+			  <td>£164</td>
+			  <td>512 GB</td>
+			  <td>1 month</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C44B1VSH/ref=nosim?tag=haloovenrevi15-21">WD_BLACK 512GB C50 Expansion Card for Xbox, Compatible for Xbox Series X,S Expansion Card with Officially Licensed for Xbox, Includes 1 Month Xbox Game Pass Subscription</a></td>
+			</tr>
+			<tr>
+			  <td>External</td>
+			  <td>SSD</td>
+			  <td>Western Digital</td>
+			  <td>£85</td>
+			  <td>£0.042</td>
+			  <td>£42.50</td>
+			  <td>2 TB</td>
+			  <td>3 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B08NDSNVD4/ref=nosim?tag=haloovenrevi15-21">WD_BLACK P10 2TB Game Drive for Xbox One for On-The-Go Access To Your Xbox Game library</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£139</td>
+			  <td>£0.139</td>
+			  <td>£139</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09ZRD38D8/ref=nosim?tag=haloovenrevi15-21">WD_BLACK P40 1TB Game Drive SSD USB-C USB 3.2 Gen 2x2 External NVMe Solid State Drive up to 2000 MB/s Customizable RGB lighting works with Playstation, Xbox, PC, & Mac</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£178</td>
+			  <td>£0.089</td>
+			  <td>£89.08</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09ZRWT134/ref=nosim?tag=haloovenrevi15-21">WD_BLACK P40 2TB Game Drive SSD USB-C USB 3.2 Gen 2x2 External NVMe Solid State Drive up to 2000 MB/s Customizable RGB lighting works with Playstation, Xbox, PC, & Mac</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£65</td>
+			  <td>£0.065</td>
+			  <td>£64.99</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09QV692XY/ref=nosim?tag=haloovenrevi15-21">WD_BLACK SN770 1TB M.2 2280 Game Drive PCIe Gen4 NVMe up to 5150 MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£119</td>
+			  <td>£0.060</td>
+			  <td>£59.58</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09QV5KJHV/ref=nosim?tag=haloovenrevi15-21">WD_BLACK SN770 2TB M.2 2280 Game Drive PCIe Gen4 NVMe up to 5150 MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£118</td>
+			  <td>£0.118</td>
+			  <td>£118</td>
+			  <td>1 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C48B3RGL/ref=nosim?tag=haloovenrevi15-21">WD_BLACK SN850P 1TB M.2 PCIe NVMe SSD - Officially Licensed for PlayStation®5 consoles - up to 7,300MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£203</td>
+			  <td>£0.101</td>
+			  <td>£101</td>
+			  <td>2 TB</td>
+			  <td>NaN</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0C47ZX1WB/ref=nosim?tag=haloovenrevi15-21">WD_BLACK SN850P 2TB M.2 PCIe NVMe SSD - Officially Licensed for PlayStation®5 consoles - up to 7,300MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£95</td>
+			  <td>£0.095</td>
+			  <td>£94.88</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B7CPSN2K/ref=nosim?tag=haloovenrevi15-21">WD_BLACK SN850X 1TB M.2 2280 Game Drive with Heatsink PCIe Gen4 NVMe up to 7300 MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£79</td>
+			  <td>£0.079</td>
+			  <td>£79.00</td>
+			  <td>1 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B7CKVCCV/ref=nosim?tag=haloovenrevi15-21">WD_BLACK SN850X 1TB M.2 2280, Game Drive, PCIe Gen4 NVMe up to 7300 MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£152</td>
+			  <td>£0.076</td>
+			  <td>£76.23</td>
+			  <td>2 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B7CKZGN6/ref=nosim?tag=haloovenrevi15-21">WD_BLACK SN850X 2TB M.2 2280 Game Drive with Heatsink PCIe Gen4 NVMe up to 7300 MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£303</td>
+			  <td>£0.076</td>
+			  <td>£75.82</td>
+			  <td>4 TB</td>
+			  <td>5 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B0B7CQ2CHH/ref=nosim?tag=haloovenrevi15-21">WD_BLACK SN850X 4TB M.2 2280 Game Drive PCIe Gen4 NVMe up to 7300 MB/s</a></td>
+			</tr>
+			<tr>
+			  <td>M.2</td>
+			  <td>NVMe</td>
+			  <td>Western Digital</td>
+			  <td>£94</td>
+			  <td>£0.047</td>
+			  <td>£46.98</td>
+			  <td>2 TB</td>
+			  <td>2 years</td>
+			  <td><a href="http://www.amazon.co.uk/dp/B09JM8DJNS/ref=nosim?tag=haloovenrevi15-21">WD_BLUE SN570 2TB M.2 2280 PCIe Gen3 NVMe up to 3500 MB/s read speed</a></td>
+			</tr>
+  </tbody>		<h5>amazon.co.uk Prices Listed as of 05/01/2024 14:11 [UTC]</h5>
+      </table>
+      <button onclick="resetFilter()">Reset Filter</button>
+      <script>
+        window.onload = () => {
+          console.log(document.querySelector("#emp-table > tbody > tr:nth-child(1) > td:nth-child(2)").innerHTML);
+        };
+
+        getUniqueValuesFromColumn();
+
+        function getUniqueValuesFromColumn() {
+          var unique_col_values_dict = {}
+
+          allFilters = document.querySelectorAll(".table-filter")
+          allFilters.forEach((filter_i) => {
+            col_index = filter_i.parentElement.getAttribute("col-index");
+            const rows = document.querySelectorAll("#emp-table > tbody > tr")
+
+            rows.forEach((row) => {
+              cell_value = row.querySelector("td:nth-child(" + col_index + ")").innerHTML;
+              if (col_index in unique_col_values_dict) {
+                if (!unique_col_values_dict[col_index].includes(cell_value)) {
+                  unique_col_values_dict[col_index].push(cell_value);
+                }
+              } else {
+                unique_col_values_dict[col_index] = [cell_value];
+              }
+            });
+          });
+
+          updateSelectOptions(unique_col_values_dict);
+        }
+
+        function updateSelectOptions(unique_col_values_dict) {
+          allFilters = document.querySelectorAll(".table-filter")
+
+          allFilters.forEach((filter_i) => {
+            col_index = filter_i.parentElement.getAttribute('col-index')
+
+            unique_col_values_dict[col_index].forEach((i) => {
+              filter_i.innerHTML += `\n<option value="${i}">${i}</option>`;
+            });
+          });
+        }
+
+        function filter_rows() {
+          allFilters = document.querySelectorAll(".table-filter")
+          var filter_value_dict = {}
+
+          allFilters.forEach((filter_i) => {
+            col_index = filter_i.parentElement.getAttribute('col-index')
+            value = filter_i.value
+            if (value != "all") {
+              filter_value_dict[col_index] = value;
+            }
+          });
+
+          var col_cell_value_dict = {};
+
+          const rows = document.querySelectorAll("#emp-table tbody tr");
+          rows.forEach((row) => {
+            var display_row = true;
+
+            allFilters.forEach((filter_i) => {
+              col_index = filter_i.parentElement.getAttribute('col-index')
+              col_cell_value_dict[col_index] = row.querySelector("td:nth-child(" + col_index + ")").innerHTML
+            })
+
+            for (var col_i in filter_value_dict) {
+              filter_value = filter_value_dict[col_i]
+              row_cell_value = col_cell_value_dict[col_i]
+
+              if (row_cell_value.indexOf(filter_value) == -1 && filter_value != "all") {
+                display_row = false;
+                break;
+              }
+            }
+
+            row.style.display = display_row ? "table-row" : "none";
+          })
+        }
+
+        function resetFilter() {
+          // Reset filter logic goes here
+        }
+      </script>
+    </div>
+  </div>
+</body>
+
+</html>
